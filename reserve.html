@@ -6,7 +6,7 @@
 
   <!-- Latest compiled and minified CSS & JS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery.js"></script>
+  
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
 </head>
@@ -21,8 +21,8 @@
       <br>
 
       <div class="text-center">
-        <a href="tables.html"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list-alt"></span> View Tables</button></a>
-        <a href="home.html"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
+        <a href="/tables"><button type="button" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list-alt"></span> View Tables</button></a>
+        <a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
       </div>
     </div>
 
@@ -67,27 +67,37 @@
       </div>
     </div>
 
-<script type="text/javascript">
-	$(“#reserve_submit”).on(“click”, function(event) {
-     event.preventDefault();
-     var newReservation = {
-       name: $(“#reserve_name”).val().trim(),
-       phone: $(“#reserve_phone”).val().trim(),
-       email: $(“#reserve_email”).val().trim(),
-       uniqueID: $(“#reserve_uniqueID”).val().trim()
-     };
-
-     $.post(“/api/new”, newReservation)
-     .done(function(data) {
-       console.log(data);
-       alert(“Adding reservation..“);
-     });
-   });
-</script>
-
       <footer class="footer">
         <div class="container">
           <p><a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a> </p>
         </div>
       </footer>
-    </div></body></html>
+    </div>
+
+<script src="https://code.jquery.com/jquery.js"></script>
+
+<script type="text/javascript">
+  $("#reserve_submit").on("click", function(event) {
+     event.preventDefault();
+     var newReservation = {
+       name: $("#reserve_name").val().trim(),
+       phone: $("#reserve_phone").val().trim(),
+       email: $("#reserve_email").val().trim(),
+       uniqueID: $("#reserve_uniqueID").val().trim()
+     };
+
+       $("#reserve_name").val('');
+       $("#reserve_phone").val('');
+       $("#reserve_email").val('');
+       $("#reserve_uniqueID").val('');
+
+     $.post("/api/new", newReservation)
+     .done(function(data) {
+       console.log(data);
+       
+     });
+   });
+</script>
+
+
+  </body></html>

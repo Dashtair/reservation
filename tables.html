@@ -21,8 +21,8 @@
       <br>
 
       <div class="text-center">
-        <a href="reserve.html"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
-        <a href="home.html"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
+        <a href="/reserve"><button type="button" class="btn btn-lg btn-danger"><span class="glyphicon glyphicon-credit-card"></span> Make Reservation</button></a>
+        <a href="/"><button type="button" class="btn btn-lg btn-default"><span class="glyphicon glyphicon-home"></span></button></a>
       </div>
     </div>
 
@@ -56,4 +56,18 @@
           <p><a href="#" id="clear">Clear Table</a> | <a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a></p>
         </div>
       </footer>
+
+      <script type="text/javascript">
+      $.get("/api/tables", function(data) {
+          $('#tableSection').text(data);
+        
+      });
+
+      $.get("/api/waitlist", function(data) {
+          $('#waitlistSection').text(data);
+        
+      });
+
+      </script>
+
       </div></body></html>
